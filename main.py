@@ -57,8 +57,11 @@ def mine(size: bytes, previous: bytes, merkle_root: bytes, time: bytes) -> int:
 if __name__ == '__main__':
     path = input("Input path to file with transactions(data/transactions by default) or input 'g' if want generate random transactions: ")
     if path == 'g':
-        n = int(input("How many transactions you want to generate(4 by default): "))
-        generate_random_transactions(n)
+        n = input("How many transactions you want to generate(4 by default): ")
+        if n == '':
+            generate_random_transactions(4)
+        else:
+            generate_random_transactions(int(n))
         transactions = load_transactions()
     elif path == '':
         transactions = load_transactions()
